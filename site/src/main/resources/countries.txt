@@ -70,3 +70,6 @@ Guatemala
 Guinea
 Guinea-Bissau
 Guyana
+Japan
+Spain
+South Korea
