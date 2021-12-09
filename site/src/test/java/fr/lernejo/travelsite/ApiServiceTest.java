@@ -20,7 +20,7 @@ class ApiServiceTest {
         "try, try@t.de, Germany, COLDER, 2"
     })
     public void register_user(String userName, String userEmail, String userCountry, String weatherExpectation, Integer minimumTemperatureDistance){
-        JsonRegistry newUser = new JsonRegistry(userName, userEmail, userCountry, weatherExpectation, minimumTemperatureDistance);
+        JsonRegistry newUser = new JsonRegistry(userEmail, userName, userCountry, weatherExpectation, minimumTemperatureDistance);
         Iterable<JsonRegistry> registries = this.apiService.register_user(newUser);
 
         Assertions.assertThat(registries)

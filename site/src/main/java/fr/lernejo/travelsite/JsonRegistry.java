@@ -16,7 +16,9 @@ public class JsonRegistry {
     }
 
     public JsonRegistry(String userEmail, String userName, String userCountry, String weatherExpectation, Integer minimumTemperatureDistance) {
-        this.userEmail = userEmail;
+        String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(userEmail.matches(EMAIL_REGEX)) this.userEmail = userEmail;
+        else throw new NotValidException("Email is not valid.");
         this.userName = userName;
         this.userCountry = userCountry;
         this.weatherExpectation = WeatherExpectation.valueOf(weatherExpectation);

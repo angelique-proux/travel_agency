@@ -28,4 +28,34 @@ class TemperatureServiceTest {
         double temperature = service.getTemperature(country);
         assertThat(temperature).isBetween(8D, 32D);
     }
+
+    @Test
+    void test_case_insensitive_hashcode_null() {
+        assertThat(new TemperatureService.CaseInsensitiveString(null).hashCode())
+            .isZero();
+    }
+
+    @Test
+    void test_case_insensitive_equals_null() {
+        assertThat(new TemperatureService.CaseInsensitiveString("France").equals(null))
+            .isFalse();
+    }
+
+    @Test
+    void test_case_insensitive_equals_same() {
+        assertThat(new TemperatureService.CaseInsensitiveString("France").equals(new TemperatureService.CaseInsensitiveString("France")))
+            .isTrue();
+    }
+
+    @Test
+    void test_case_insensitive_equals_other_class() {
+        assertThat(new TemperatureService.CaseInsensitiveString("France").equals("hh"))
+            .isFalse();
+    }
+
+    @Test
+    void test_case_insensitive_value() {
+        assertThat(new TemperatureService.CaseInsensitiveString("France").value())
+            .isEqualTo("France");
+    }
 }
