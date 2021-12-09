@@ -14,8 +14,18 @@ import java.util.ArrayList;
 @RequestMapping(path = "/api")
 public class ApiRestController {
 
-    public final PredictionEngineClient predictionEngineClient = new Launcher().predictionEngineClient();
-    public final ApiService apiService = new ApiService(this.predictionEngineClient);
+    public final PredictionEngineClient predictionEngineClient;
+    public final ApiService apiService;
+
+    public ApiRestController() {
+        this.predictionEngineClient = new Launcher().predictionEngineClient();
+        this.apiService = new ApiService(predictionEngineClient);
+    }
+
+    public ApiRestController(ApiService apiService) {
+        this.predictionEngineClient = null;
+        this.apiService = apiService;
+    }
 
     @PostMapping(path = "/inscription")
     public @ResponseBody Iterable<JsonRegistry> register_new_user(@RequestBody JsonRegistry client){

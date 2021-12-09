@@ -20,4 +20,5 @@ class PingControllerIT {
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().string("OK"));
     }
+
 }
